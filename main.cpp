@@ -60,12 +60,11 @@ int main (int argc, char* argv[]) {
   float temp = 0.0f;
   
   for(int i = 0; i < n; i++) {
-    temp += get_function_value(fuctionID, 
-                               lowerBound + (i + 0.5f) * start,
-                               intensity);
+    int x_value = static_cast<float>(lowerBound + (i + 0.5f) * start);
+    temp += get_function_value(fuctionID, x_value, intensity);
   }
   
-  std::cout << temp << std::endl;
+  std::cout << temp;
   result = start * temp;
   std::cout << result;
   
