@@ -32,6 +32,8 @@ float get_function_value(int f,int x, int intensity) {
           return f4(x, intensity);
           break;
   }
+  
+  std::cout << "Error: f is not valid.\n";
   return 0.0f;
 }
   
@@ -50,23 +52,28 @@ int main (int argc, char* argv[]) {
   
   auto startTime = system_clock::now();
   
-  float result = 0.0f;
+  int result = 0;
   float start = (upperBound - lowerBound) / static_cast<float>(n);
+  
+  //std::cout << start << std::endl;
+  
   float temp = 0.0f;
   
   for(int i = 0; i < n; i++) {
     temp += get_function_value(fuctionID, 
-                               lowerBound + (i + 0.5f ) * start,
+                               lowerBound + (i + 0.5f) * start,
                                intensity);
   }
   
+  std::cout << temp << std::endl;
   result = start * temp;
+  std::cout << result;
   
   auto stopTime = system_clock::now();
   
   std::chrono::duration<double> diff = stopTime - startTime;
   
-  std::cout << result;
+  
   std::cerr << diff.count();
   
   return 0;
