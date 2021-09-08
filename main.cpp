@@ -17,7 +17,7 @@ float f4(float x, int intensity);
 #endif
 using namespace std::chrono;
 
-float get_function_value(int f,int x, int intensity) {
+float get_function_value(int f,float x, int intensity) {
     switch(f) {
       case 1:
           return f1(x, intensity);
@@ -52,7 +52,7 @@ int main (int argc, char* argv[]) {
   
   auto startTime = system_clock::now();
   
-  int result = 0;
+  float result = 0;
   float start = (upperBound - lowerBound) / static_cast<float>(n);
   
   //std::cout << start << std::endl;
@@ -60,11 +60,11 @@ int main (int argc, char* argv[]) {
   float temp = 0.0f;
   
   for(int i = 0; i < n; i++) {
-    int x_value = static_cast<float>(lowerBound + (i + 0.5f) * start);
+    float x_value = lowerBound + (i + 0.5f) * start;
     temp += get_function_value(fuctionID, x_value, intensity);
   }
   
-  std::cout << temp;
+  //std::cout << temp;
   result = start * temp;
   std::cout << result;
   
